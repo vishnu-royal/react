@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Routes>
+        <Routes basename="/react">
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
