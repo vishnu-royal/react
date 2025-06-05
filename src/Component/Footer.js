@@ -9,7 +9,7 @@ const Footer = () => {
                     <h3 className="mb-4 text-xl font-bold">Connecting<span className="text-primary">Traveller</span></h3>
                     <p className="mb-4 text-slate-300">Connecting travelers with each other and with local experts for authentic travel experiences across India.</p>
                     <div className="flex gap-4">
-                        <a href="#" className="text-white hover:text-primary transition-colors">
+                        <a href="https://www.facebook.com/" className="text-white hover:text-primary transition-colors">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -26,7 +26,7 @@ const Footer = () => {
                             </svg>
                             <span className="sr-only">Facebook</span>
                         </a>
-                        <a href="#" className="text-white hover:text-primary transition-colors">
+                        <a href="https://x.com/" className="text-white hover:text-primary transition-colors">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -43,7 +43,7 @@ const Footer = () => {
                             </svg>
                             <span className="sr-only">Twitter</span>
                         </a>
-                        <a href="#" className="text-white hover:text-primary transition-colors">
+                        <a href="https://www.instagram.com/" className="text-white hover:text-primary transition-colors">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -62,7 +62,7 @@ const Footer = () => {
                             </svg>
                             <span className="sr-only">Instagram</span>
                         </a>
-                        <a href="#" className="text-white hover:text-primary transition-colors">
+                        <a href="https://www.youtube.com/" className="text-white hover:text-primary transition-colors">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -85,21 +85,21 @@ const Footer = () => {
                 <div>
                     <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
                     <ul className="space-y-2">
-                        <li><a href="index.html" className="text-slate-300 hover:text-primary transition-colors">Home</a></li>
-                        <li><a href="community.html" className="text-slate-300 hover:text-primary transition-colors">Community</a></li>
-                        <li><a href="experts.html" className="text-slate-300 hover:text-primary transition-colors">Find Experts</a></li>
-                        <li><a href="destinations.html" className="text-slate-300 hover:text-primary transition-colors">Destinations</a></li>
-                        <li><a href="about.html" className="text-slate-300 hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="/" className="text-slate-300 hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="/community" className="text-slate-300 hover:text-primary transition-colors">Community</a></li>
+                        <li><a href="/experts" className="text-slate-300 hover:text-primary transition-colors">Find Experts</a></li>
+                        <li><a href="/destinations" className="text-slate-300 hover:text-primary transition-colors">Destinations</a></li>
+                        <li><a href="/about" className="text-slate-300 hover:text-primary transition-colors">About Us</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 className="mb-4 text-lg font-semibold">Resources</h3>
                     <ul className="space-y-2">
-                        <li><a href="#" className="text-slate-300 hover:text-primary transition-colors">Travel Guides</a></li>
-                        <li><a href="#" className="text-slate-300 hover:text-primary transition-colors">Become an Expert</a></li>
-                        <li><a href="#" className="text-slate-300 hover:text-primary transition-colors">Community Guidelines</a></li>
-                        <li><a href="#" className="text-slate-300 hover:text-primary transition-colors">FAQs</a></li>
-                        <li><a href="#" className="text-slate-300 hover:text-primary transition-colors">Blog</a></li>
+                        <li><a href="/guides" className="text-slate-300 hover:text-primary transition-colors">Travel Guides</a></li>
+                        <li><a href="/expert" className="text-slate-300 hover:text-primary transition-colors">Become an Expert</a></li>
+                        <li><a href="/guidelines" className="text-slate-300 hover:text-primary transition-colors">Community Guidelines</a></li>
+                        <li><a href="/faqs" className="text-slate-300 hover:text-primary transition-colors">FAQs</a></li>
+                        <li><a href="/blog" className="text-slate-300 hover:text-primary transition-colors">Blog</a></li>
                     </ul>
                 </div>
                 <div>
@@ -167,8 +167,8 @@ const Footer = () => {
                 <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
                     <p className="text-sm text-slate-400">© 2025 Connecting Traveller. All rights reserved.</p>
                     <div className="flex gap-4">
-                        <a href="#" className="text-sm text-slate-400 hover:text-primary transition-colors">Privacy Policy</a><a href="#" className="text-sm text-slate-400 hover:text-primary transition-colors">Terms of Service</a>
-                        <a href="#" className="text-sm text-slate-400 hover:text-primary transition-colors">Cookie Policy</a>
+                        <a href="/privacypolicy" className="text-sm text-slate-400 hover:text-primary transition-colors">Privacy Policy</a><a href="#" className="text-sm text-slate-400 hover:text-primary transition-colors">Terms of Service</a>
+                        <a href="/cookiepolicy" className="text-sm text-slate-400 hover:text-primary transition-colors">Cookie Policy</a>
                     </div>
                 </div>
             </div>

@@ -44,7 +44,7 @@ const Index = () => {
                               </p>
                               <div className="clickme mb-3 sm:mb-8 p-1 bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 shadow-xl transition-all duration-700 delay-300 ease-out opacity-100 translate-y-0">
                                   <div className="grid grid-cols-2 gap-2">
-                                      <a className="activelink" href="javascript:void(0)" data-tag="community">
+                                      <a className="activelink" href="#" data-tag="community">
                                           <button
                                               className="w-full flex items-center justify-center gap-1 sm:gap-2 rounded-lg px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium transition-all duration-500 bg-gradient-to-r from-primary to-primary/80 text-white shadow-lg shadow-primary/20 scale-105 transform"
                                           >
@@ -71,7 +71,7 @@ const Index = () => {
                                               </div>
                                           </button>
                                       </a>
-                                      <a href="javascript:void(0)" data-tag="experts">
+                                      <a href="#" data-tag="experts">
                                           <button
                                               className="w-full flex items-center justify-center gap-1 sm:gap-2 rounded-lg px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium transition-all duration-500 text-white hover:bg-white/10 hover:scale-105 transform"
                                           >
