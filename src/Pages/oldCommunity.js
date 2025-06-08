@@ -1,80 +1,9 @@
-import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Thumbs } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
-
+import React from 'react';
 
 import Header from '../Component/Header';
 import Footer from '../Component/Footer';
 
 const Community = () => {
-     const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
-  const images = [
-    {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/sydney-event-718dPIskbatRbpERJbKB2VtOE6mx27.jpg',
-      title: 'Tokyo Sakura Festival Meetup',
-      participants: '45',
-      location: 'Tokyo, Japan',
-      date: 'April 2023',
-      tags: ['Cultural', 'Photography', 'Seasonal'],
-      quote: `"The local insights we gained were incredible. This wasn't just sightseeing—it was true cultural immersion."`,
-      author: 'Emma W.',
-    },
-    {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-event-v8qNb2lZHt1WzNdU6KnSuuIg8g0ybm.jpg',
-      title: 'NYC Rooftop Social',
-      participants: '38',
-      location: 'New York, USA',
-      date: 'June 2023',
-      tags: ['Urban', 'Networking', 'Evening'],
-      quote: `"From strangers to friends in one evening. The views were amazing, but the connections were even better."`,
-      author: 'Michael R.',
-    },
-    {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-event-v8qNb2lZHt1WzNdU6KnSuuIg8g0ybm.jpg',
-      title: 'NYC Rooftop Social',
-      participants: '38',
-      location: 'New York, USA',
-      date: 'June 2023',
-      tags: ['Urban', 'Networking', 'Evening'],
-      quote: `"From strangers to friends in one evening. The views were amazing, but the connections were even better."`,
-      author: 'Michael R.',
-    },
-    {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-event-v8qNb2lZHt1WzNdU6KnSuuIg8g0ybm.jpg',
-      title: 'NYC Rooftop Social',
-      participants: '38',
-      location: 'New York, USA',
-      date: 'June 2023',
-      tags: ['Urban', 'Networking', 'Evening'],
-      quote: `"From strangers to friends in one evening. The views were amazing, but the connections were even better."`,
-      author: 'Michael R.',
-    },
-    {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-event-v8qNb2lZHt1WzNdU6KnSuuIg8g0ybm.jpg',
-      title: 'NYC Rooftop Social',
-      participants: '38',
-      location: 'New York, USA',
-      date: 'June 2023',
-      tags: ['Urban', 'Networking', 'Evening'],
-      quote: `"From strangers to friends in one evening. The views were amazing, but the connections were even better."`,
-      author: 'Michael R.',
-    },
-    {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-event-v8qNb2lZHt1WzNdU6KnSuuIg8g0ybm.jpg',
-      title: 'NYC Rooftop Social',
-      participants: '38',
-      location: 'New York, USA',
-      date: 'June 2023',
-      tags: ['Urban', 'Networking', 'Evening'],
-      quote: `"From strangers to friends in one evening. The views were amazing, but the connections were even better."`,
-      author: 'Michael R.',
-    },
-  ];
-
   return (
     <>
       <Header />
@@ -610,47 +539,399 @@ const Community = () => {
                     </div> --> */}
                     
                 </div>
-                <div class="md:block">
+                <div class=" md:block">
                     <div class="grid gap-6 md:grid-cols-3 lg:grid-cols-4">
                         <div class="relative overflow-hidden rounded-xl md:col-span-2 lg:col-span-3">
-                            <div className="relative overflow-hidden rounded-xl md:col-span-2 lg:col-span-3">
-                                <Swiper
-                                    modules={[Navigation, Thumbs]}
-                                    thumbs={{ swiper: thumbsSwiper }}
-                                    navigation={{
-                                        nextEl: '.custom-next',
-                                        prevEl: '.custom-prev',
-                                    }}
-                                    className="aspect-[16/9]"
-                                >
-                                    {images.map((img, index) => (
-                                    <SwiperSlide key={index}>
-                                        <div className="relative">
-                                        <img className="object-cover w-full h-full" src={img.src} alt={img.title} />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
-                                        <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white">
-                                            <div className="flex flex-wrap items-center gap-2 mb-2">
-                                            <div className="bg-primary px-2.5 py-0.5 text-xs rounded-full font-semibold"> {img.participants} Participants </div>
-                                            <div className="bg-black/50 px-2 py-1 text-xs rounded-full">{img.location}</div>
-                                            <div className="bg-black/50 px-2 py-1 text-xs rounded-full">{img.date}</div>
+                            <div class="swiper mainSwiper relative aspect-[16/9] w-full overflow-hidden">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide relative">
+                                        <img alt="Tokyo Sakura Festival Meetup" decoding="async" data-nimg="fill" class="object-cover" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/sydney-event-718dPIskbatRbpERJbKB2VtOE6mx27.jpg" />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                                        <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                                            <div class="flex flex-wrap items-center gap-2">
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-primary text-white"
+                                                    data-v0-t="badge"
+                                                >
+                                                    45 Participants
+                                                </div>
+                                                <div class="flex items-center gap-1 rounded-full bg-black/50 px-2 py-1 text-xs text-white backdrop-blur-sm">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-map-pin h-3 w-3 text-primary"
+                                                    >
+                                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                        <circle cx="12" cy="10" r="3"></circle>
+                                                    </svg>
+                                                    Tokyo, Japan
+                                                </div>
+                                                <div class="flex items-center gap-1 rounded-full bg-black/50 px-2 py-1 text-xs text-white backdrop-blur-sm">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-calendar h-3 w-3 text-primary"
+                                                    >
+                                                        <path d="M8 2v4"></path>
+                                                        <path d="M16 2v4"></path>
+                                                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                                                        <path d="M3 10h18"></path>
+                                                    </svg>
+                                                    April 2023
+                                                </div>
                                             </div>
-                                            <h4 className="text-xl md:text-2xl font-bold">{img.title}</h4>
-                                            <div className="flex flex-wrap gap-1 mt-2">
-                                            {img.tags.map((tag, i) => (
-                                                <span key={i} className="bg-black/30 px-2.5 py-0.5 text-xs rounded-full">{tag}</span>
-                                            ))}
+                                            <h4 class="mt-2 text-xl font-bold text-white md:text-2xl">Tokyo Sakura Festival Meetup</h4>
+                                            <div class="mt-2 flex flex-wrap gap-1">
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Cultural
+                                                </div>
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Photography
+                                                </div>
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Seasonal
+                                                </div>
                                             </div>
-                                            <div className="mt-3 bg-black/40 p-3 rounded-lg max-w-[80%]">
-                                            <p className="italic text-sm"> {img.quote} </p>
-                                            <p className="text-xs mt-1 font-medium text-primary">— {img.author}</p>
+                                            <div class="mt-3 rounded-lg bg-black/40 p-3 backdrop-blur-sm md:max-w-[80%]">
+                                                <p class="text-sm italic text-white">"The local insights we gained were incredible. This wasn't just sightseeing—it was true cultural immersion."</p>
+                                                <p class="mt-1 text-xs font-medium text-primary">— Emma W.</p>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="swiper-slide relative">
+                                        <img alt="Tokyo Sakura Festival Meetup" decoding="async" data-nimg="fill" class="object-cover" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-event-v8qNb2lZHt1WzNdU6KnSuuIg8g0ybm.jpg" />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                                        <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                                            <div class="flex flex-wrap items-center gap-2">
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-primary text-white"
+                                                    data-v0-t="badge"
+                                                >
+                                                    38 Participants
+                                                </div>
+                                                <div class="flex items-center gap-1 rounded-full bg-black/50 px-2 py-1 text-xs text-white backdrop-blur-sm">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-map-pin h-3 w-3 text-primary"
+                                                    >
+                                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                        <circle cx="12" cy="10" r="3"></circle>
+                                                    </svg>
+                                                    New York, USA
+                                                </div>
+                                                <div class="flex items-center gap-1 rounded-full bg-black/50 px-2 py-1 text-xs text-white backdrop-blur-sm">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-calendar h-3 w-3 text-primary"
+                                                    >
+                                                        <path d="M8 2v4"></path>
+                                                        <path d="M16 2v4"></path>
+                                                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                                                        <path d="M3 10h18"></path>
+                                                    </svg>
+                                                    June 2023
+                                                </div>
+                                            </div>
+                                            <h4 class="mt-2 text-xl font-bold text-white md:text-2xl">NYC Rooftop Social</h4>
+                                            <div class="mt-2 flex flex-wrap gap-1">
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Urban
+                                                </div>
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Networking
+                                                </div>
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Evening
+                                                </div>
+                                            </div>
+                                            <div class="mt-3 rounded-lg bg-black/40 p-3 backdrop-blur-sm md:max-w-[80%]">
+                                                <p class="text-sm italic text-white">"From strangers to friends in one evening. The views were amazing, but the connections were even better."</p>
+                                                <p class="mt-1 text-xs font-medium text-primary">— Michael R.</p>
+                                            </div>
                                         </div>
-                                    </SwiperSlide>
-                                    ))}
-                                </Swiper>
-                                <button
-                                    class="custom-prev absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-800 shadow-md transition-all duration-300 hover:bg-primary hover:text-white"
+                                    </div>
+                                    <div class="swiper-slide relative">
+                                        <img alt="Tokyo Sakura Festival Meetup" decoding="async" data-nimg="fill" class="object-cover" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/sydney-event-718dPIskbatRbpERJbKB2VtOE6mx27.jpg" />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                                        <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                                            <div class="flex flex-wrap items-center gap-2">
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-primary text-white"
+                                                    data-v0-t="badge"
+                                                >
+                                                    32 Participants
+                                                </div>
+                                                <div class="flex items-center gap-1 rounded-full bg-black/50 px-2 py-1 text-xs text-white backdrop-blur-sm">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-map-pin h-3 w-3 text-primary"
+                                                    >
+                                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                        <circle cx="12" cy="10" r="3"></circle>
+                                                    </svg>
+                                                    London, UK
+                                                </div>
+                                                <div class="flex items-center gap-1 rounded-full bg-black/50 px-2 py-1 text-xs text-white backdrop-blur-sm">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-calendar h-3 w-3 text-primary"
+                                                    >
+                                                        <path d="M8 2v4"></path>
+                                                        <path d="M16 2v4"></path>
+                                                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                                                        <path d="M3 10h18"></path>
+                                                    </svg>
+                                                    May 2023
+                                                </div>
+                                            </div>
+                                            <h4 class="mt-2 text-xl font-bold text-white md:text-2xl">London Pub Crawl Adventure</h4>
+                                            <div class="mt-2 flex flex-wrap gap-1">
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Nightlife
+                                                </div>
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Historical
+                                                </div>
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Food &amp; Drink
+                                                </div>
+                                            </div>
+                                            <div class="mt-3 rounded-lg bg-black/40 p-3 backdrop-blur-sm md:max-w-[80%]">
+                                                <p class="text-sm italic text-white">"We discovered hidden gems that even locals didn't know about. This is what travel is all about!"</p>
+                                                <p class="mt-1 text-xs font-medium text-primary">— Sarah J.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide relative">
+                                        <img alt="Tokyo Sakura Festival Meetup" decoding="async" data-nimg="fill" class="object-cover" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-event-v8qNb2lZHt1WzNdU6KnSuuIg8g0ybm.jpg" />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                                        <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                                            <div class="flex flex-wrap items-center gap-2">
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-primary text-white"
+                                                    data-v0-t="badge"
+                                                >
+                                                    50 Participants
+                                                </div>
+                                                <div class="flex items-center gap-1 rounded-full bg-black/50 px-2 py-1 text-xs text-white backdrop-blur-sm">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-map-pin h-3 w-3 text-primary"
+                                                    >
+                                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                        <circle cx="12" cy="10" r="3"></circle>
+                                                    </svg>
+                                                    Barcelona, Spain
+                                                </div>
+                                                <div class="flex items-center gap-1 rounded-full bg-black/50 px-2 py-1 text-xs text-white backdrop-blur-sm">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-calendar h-3 w-3 text-primary"
+                                                    >
+                                                        <path d="M8 2v4"></path>
+                                                        <path d="M16 2v4"></path>
+                                                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                                                        <path d="M3 10h18"></path>
+                                                    </svg>
+                                                    July 2023
+                                                </div>
+                                            </div>
+                                            <h4 class="mt-2 text-xl font-bold text-white md:text-2xl">Barcelona Beach Cleanup</h4>
+                                            <div class="mt-2 flex flex-wrap gap-1">
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Volunteering
+                                                </div>
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Beach
+                                                </div>
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Eco-friendly
+                                                </div>
+                                            </div>
+                                            <div class="mt-3 rounded-lg bg-black/40 p-3 backdrop-blur-sm md:max-w-[80%]">
+                                                <p class="text-sm italic text-white">"Making a positive impact while connecting with like-minded travelers was the highlight of my trip."</p>
+                                                <p class="mt-1 text-xs font-medium text-primary">— David L.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide relative">
+                                        <img alt="Tokyo Sakura Festival Meetup" decoding="async" data-nimg="fill" class="object-cover" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/sydney-event-718dPIskbatRbpERJbKB2VtOE6mx27.jpg" />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                                        <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                                            <div class="flex flex-wrap items-center gap-2">
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-primary text-white"
+                                                    data-v0-t="badge"
+                                                >
+                                                    28 Participants
+                                                </div>
+                                                <div class="flex items-center gap-1 rounded-full bg-black/50 px-2 py-1 text-xs text-white backdrop-blur-sm">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-map-pin h-3 w-3 text-primary"
+                                                    >
+                                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                        <circle cx="12" cy="10" r="3"></circle>
+                                                    </svg>
+                                                    Sydney, Australia
+                                                </div>
+                                                <div class="flex items-center gap-1 rounded-full bg-black/50 px-2 py-1 text-xs text-white backdrop-blur-sm">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-calendar h-3 w-3 text-primary"
+                                                    >
+                                                        <path d="M8 2v4"></path>
+                                                        <path d="M16 2v4"></path>
+                                                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                                                        <path d="M3 10h18"></path>
+                                                    </svg>
+                                                    March 2023
+                                                </div>
+                                            </div>
+                                            <h4 class="mt-2 text-xl font-bold text-white md:text-2xl">Sydney Harbour Sailing Day</h4>
+                                            <div class="mt-2 flex flex-wrap gap-1">
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Water Activity
+                                                </div>
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Outdoor
+                                                </div>
+                                                <div
+                                                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-white/30 bg-black/30 text-white backdrop-blur-sm"
+                                                    data-v0-t="badge"
+                                                >
+                                                    Scenic
+                                                </div>
+                                            </div>
+                                            <div class="mt-3 rounded-lg bg-black/40 p-3 backdrop-blur-sm md:max-w-[80%]">
+                                                <p class="text-sm italic text-white">"The local sailing enthusiasts shared stories that gave us a completely new perspective on Sydney."</p>
+                                                <p class="mt-1 text-xs font-medium text-primary">— Aisha P.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="prevBtn"
+                                    class="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-800 shadow-md transition-all duration-300 hover:bg-primary hover:text-white"
                                     aria-label="Previous activity"
                                     >
                                     <svg
@@ -668,8 +949,8 @@ const Community = () => {
                                         <path d="m15 18-6-6 6-6"></path>
                                     </svg>
                                 </button>
-                                <button
-                                    class="custom-next absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-800 shadow-md transition-all duration-300 hover:bg-primary hover:text-white"
+                                <button id="nextBtn"
+                                    class="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-800 shadow-md transition-all duration-300 hover:bg-primary hover:text-white"
                                     aria-label="Next activity"
                                     >
                                     <svg
@@ -687,11 +968,11 @@ const Community = () => {
                                         <path d="m9 18 6-6-6-6"></path>
                                     </svg>
                                 </button>
-                                </div>
+                            </div>
                             <div class="custom-pagination flex items-center justify-center gap-2 border-t border-slate-100 bg-white p-2 mt-2"></div>
                         </div>
                        <div class="flex flex-col gap-4">
-                           <div class="rounded-lg border bg-card text-card-foreground shadow-sm border-primary/20 bg-gradient-to-br from-primary/10 to-white" data-v0-t="card">
+                            <div class="rounded-lg border bg-card text-card-foreground shadow-sm border-primary/20 bg-gradient-to-br from-primary/10 to-white" data-v0-t="card">
                                 <div class="p-4">
                                     <div class="flex items-center gap-2 text-primary">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-5 w-5">
@@ -779,7 +1060,18 @@ const Community = () => {
                                         class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 mt-4 w-full bg-primary text-white hover:bg-primary/90"
                                     >
                                         Join Next Meetup
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1 h-4 w-4">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="lucide lucide-arrow-right ml-1 h-4 w-4"
+                                        >
                                             <path d="M5 12h14"></path>
                                             <path d="m12 5 7 7-7 7"></path>
                                         </svg>
@@ -797,13 +1089,25 @@ const Community = () => {
                                                 decoding="async"
                                                 data-nimg="fill"
                                                 class="object-cover"
+                                                
                                                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/paris-premium-KRxmtU7XnvAoZD5QnMjcCj6anBcJ32.jpg"
                                             />
                                         </div>
                                         <div class="flex-1">
                                             <h5 class="text-xs font-bold text-slate-800">Paris Evening Stroll</h5>
                                             <p class="flex items-center gap-1 text-xs text-slate-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar h-3 w-3">
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="lucide lucide-calendar h-3 w-3"
+                                                >
                                                     <path d="M8 2v4"></path>
                                                     <path d="M16 2v4"></path>
                                                     <rect width="18" height="18" x="3" y="4" rx="2"></rect>
@@ -821,13 +1125,25 @@ const Community = () => {
                                                 decoding="async"
                                                 data-nimg="fill"
                                                 class="object-cover"
+                                                
                                                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/tokyo-premium-QP12TkkIL0YeIX4LSGHtSn8zXYPV9p.jpg"
                                             />
                                         </div>
                                         <div class="flex-1">
                                             <h5 class="text-xs font-bold text-slate-800">Tokyo Street Food Tour</h5>
                                             <p class="flex items-center gap-1 text-xs text-slate-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar h-3 w-3">
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="lucide lucide-calendar h-3 w-3"
+                                                >
                                                     <path d="M8 2v4"></path>
                                                     <path d="M16 2v4"></path>
                                                     <rect width="18" height="18" x="3" y="4" rx="2"></rect>
@@ -845,13 +1161,25 @@ const Community = () => {
                                                 decoding="async"
                                                 data-nimg="fill"
                                                 class="object-cover"
+                                                
                                                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-premium-jIqylTxnl7GAfqWMHqRHt7FbLQYMgj.jpg"
                                             />
                                         </div>
                                         <div class="flex-1">
                                             <h5 class="text-xs font-bold text-slate-800">Barcelona Tapas Night</h5>
                                             <p class="flex items-center gap-1 text-xs text-slate-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar h-3 w-3">
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="lucide lucide-calendar h-3 w-3"
+                                                >
                                                     <path d="M8 2v4"></path>
                                                     <path d="M16 2v4"></path>
                                                     <rect width="18" height="18" x="3" y="4" rx="2"></rect>
@@ -866,35 +1194,204 @@ const Community = () => {
                                     class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 underline-offset-4 hover:underline mt-1 h-auto p-0 text-xs text-primary"
                                 >
                                     View all upcoming meetups
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-1 h-3 w-3">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="lucide lucide-chevron-right ml-1 h-3 w-3"
+                                    >
                                         <path d="m9 18 6-6-6-6"></path>
                                     </svg>
                                 </button>
                             </div>
-
-
                         </div>
 
                     </div>
-                    <Swiper
-                        modules={[Thumbs]}
-                        watchSlidesProgress
-                        onSwiper={setThumbsSwiper}
-                        spaceBetween={10}
-                        slidesPerView={5}
-                        className="mt-6"
-                    >
-                        {images.map((img, index) => (
-                        <SwiperSlide key={index} className="cursor-pointer">
-                            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-slate-200 hover:border-primary transition">
-                            <img src={img.src} alt={img.title} className="object-cover w-full h-full" />
-                            <div className="absolute bottom-0 left-0 right-0 p-2 bg-primary/30 text-white text-xs font-medium">
-                                {img.title}
+                    <div class="swiper thumbnailSwiper mt-6 grid gap-3 sm:grid-cols-3 md:grid-cols-5">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide click relative cursor-pointer overflow-hidden rounded-lg border transition-all duration-300 border-primary ring-1 ring-primary/20">
+                                <div class="relative aspect-[4/3] w-full overflow-hidden">
+                                    <img
+                                        alt="Tokyo Sakura Festival Meetup"
+                                        loading="lazy"
+                                        decoding="async"
+                                        data-nimg="fill"
+                                        class="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        
+                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/sydney-event-718dPIskbatRbpERJbKB2VtOE6mx27.jpg"
+                                    />
+                                    <div class="absolute inset-0 transition-opacity bg-primary/30"></div>
+                                    <div class="absolute bottom-0 left-0 right-0 p-2">
+                                        <p class="text-xs font-medium text-white line-clamp-1">Tokyo Sakura Festival Meetup</p>
+                                        <div class="flex items-center gap-1 text-xs text-slate-200">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="lucide lucide-map-pin h-2.5 w-2.5 text-primary"
+                                            >
+                                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            Tokyo, Japan
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="swiper-slide click relative cursor-pointer overflow-hidden rounded-lg border transition-all duration-300 border-slate-200 hover:border-primary/30">
+                                <div class="relative aspect-[4/3] w-full overflow-hidden">
+                                    <img
+                                        alt="NYC Rooftop Social"
+                                        loading="lazy"
+                                        decoding="async"
+                                        data-nimg="fill"
+                                        class="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        
+                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-event-v8qNb2lZHt1WzNdU6KnSuuIg8g0ybm.jpg"
+                                    />
+                                    <div class="absolute inset-0 transition-opacity bg-primary/30"></div>
+                                    <div class="absolute bottom-0 left-0 right-0 p-2">
+                                        <p class="text-xs font-medium text-white line-clamp-1">NYC Rooftop Social</p>
+                                        <div class="flex items-center gap-1 text-xs text-slate-200">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="lucide lucide-map-pin h-2.5 w-2.5 text-primary"
+                                            >
+                                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            New York, USA
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </SwiperSlide>
-                        ))}
-                    </Swiper>
+                            <div class="swiper-slide click relative cursor-pointer overflow-hidden rounded-lg border transition-all duration-300 border-slate-200 hover:border-primary/30">
+                                <div class="relative aspect-[4/3] w-full overflow-hidden">
+                                    <img
+                                        alt="London Pub Crawl Adventure"
+                                        loading="lazy"
+                                        decoding="async"
+                                        data-nimg="fill"
+                                        class="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        
+                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/sydney-event-718dPIskbatRbpERJbKB2VtOE6mx27.jpg"
+                                    />
+                                    <div class="absolute inset-0 transition-opacity bg-primary/30"></div>
+                                    <div class="absolute bottom-0 left-0 right-0 p-2">
+                                        <p class="text-xs font-medium text-white line-clamp-1">London Pub Crawl Adventure</p>
+                                        <div class="flex items-center gap-1 text-xs text-slate-200">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="lucide lucide-map-pin h-2.5 w-2.5 text-primary"
+                                            >
+                                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            London, UK
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide click relative cursor-pointer overflow-hidden rounded-lg border transition-all duration-300 border-slate-200 hover:border-primary/30">
+                                <div class="relative aspect-[4/3] w-full overflow-hidden">
+                                    <img
+                                        alt="Barcelona Beach Cleanup"
+                                        loading="lazy"
+                                        decoding="async"
+                                        data-nimg="fill"
+                                        class="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        
+                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-event-v8qNb2lZHt1WzNdU6KnSuuIg8g0ybm.jpg"
+                                    />
+                                    <div class="absolute inset-0 transition-opacity bg-primary/30"></div>
+                                    <div class="absolute bottom-0 left-0 right-0 p-2">
+                                        <p class="text-xs font-medium text-white line-clamp-1">Barcelona Beach Cleanup</p>
+                                        <div class="flex items-center gap-1 text-xs text-slate-200">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="lucide lucide-map-pin h-2.5 w-2.5 text-primary"
+                                            >
+                                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            Barcelona, Spain
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide click relative cursor-pointer overflow-hidden rounded-lg border transition-all duration-300 border-slate-200 hover:border-primary/30">
+                                <div class="relative aspect-[4/3] w-full overflow-hidden">
+                                    <img
+                                        alt="Sydney Harbour Sailing Day"
+                                        loading="lazy"
+                                        decoding="async"
+                                        data-nimg="fill"
+                                        class="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        
+                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/sydney-event-718dPIskbatRbpERJbKB2VtOE6mx27.jpg"
+                                    />
+                                    <div class="absolute inset-0 transition-opacity bg-primary/30"></div>
+                                    <div class="absolute bottom-0 left-0 right-0 p-2">
+                                        <p class="text-xs font-medium text-white line-clamp-1">Sydney Harbour Sailing Day</p>
+                                        <div class="flex items-center gap-1 text-xs text-slate-200">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="lucide lucide-map-pin h-2.5 w-2.5 text-primary"
+                                            >
+                                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                            Sydney, Australia
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="mt-6 md:mt-10 md:block">
                     <h4 class="mb-3 md:mb-4 text-center text-base md:text-lg font-bold text-slate-800 flex items-center justify-center gap-1.5 md:gap-2">

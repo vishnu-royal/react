@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+// import 'swiper/css/free-mode';
 
 import Header from '../Component/Header';
 import Footer from '../Component/Footer';
 
-const Index = () => {
+const Experts = () => {
+      const [activeTab, setActiveTab] = useState('city');
   return (
     <>
       <Header />
@@ -690,9 +696,13 @@ const Index = () => {
                             <div
                                 class="clickme h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground grid w-full grid-cols-2 max-w-md mx-auto mb-8"
                             >
-                                <a href="javascript:void(0)" data-tag="city"
-                                    class="activelink inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm data-[state=active]:bg-primary/20 data-[state=active]:text-primary"
-                                    
+                                <button
+                                    onClick={() => setActiveTab('city')}
+                                   className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+                                        activeTab === 'city'
+                                        ? 'shadow-sm bg-primary/20 text-primary'
+                                        : 'text-muted-foreground'
+                                    }`}
                                     >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -710,30 +720,59 @@ const Index = () => {
                                         <circle cx="12" cy="10" r="3"></circle>
                                     </svg>
                                     Browse by City
-                                </a>
-                                <a href="javascript:void(0)" data-tag="specialty"
-                                    class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm data-[state=active]:bg-primary/20 data-[state=active]:text-primary"
-                                    tabindex="-1"
-                                    data-orientation="horizontal"
-                                    data-radix-collection-item=""
-                                >
+                                </button>
+                                <button onClick={() => setActiveTab('specialty')}
+                                    className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+                                        activeTab === 'specialty'
+                                        ? 'shadow-sm bg-primary/20 text-primary'
+                                        : 'text-muted-foreground'
+                                    }`}
+                                    >
                                     <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                                     </svg>
                                     Browse by Specialty
-                                </a>
+                                </button>
                             </div>
                             <div class="custom-tab">
-                                <div class="tab-list active" id="city">
-                                    <div
-                                        class="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mt-0"
-                                        >
-                                        <div class="relative -mx-4 px-4">
-                                            <div class="swiper mySwiper4 relative">
-                                                    <button
-                                                        class="custom-prev absolute -left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-md transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-110 md:left-2"
-                                                        aria-label="Previous city"
-                                                    >
+                                <div class={`tab-list ${activeTab === 'city' ? 'block' : 'hidden'}`} id="city">
+                                   
+                                    <div className="relative -mx-4 px-4">
+                                        <Swiper
+                                            modules={[Navigation]}
+                                            spaceBetween={15}
+                                            freeMode={true}
+                                            loop={false}
+                                            navigation={{
+                                                nextEl: '.custom-next',
+                                                prevEl: '.custom-prev',
+                                            }}
+                                            slidesPerView="auto"
+                                            breakpoints={{
+                                                640: {
+                                                slidesPerView: 2.2,
+                                                },
+                                                768: {
+                                                slidesPerView: 3.5,
+                                                },
+                                                1024: {
+                                                slidesPerView: 4.6,
+                                                },
+                                            }}
+                                            className="mySwiper4"
+                                            >
+                                            <SwiperSlide className="text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md">
+                                                <div class="relative h-40 w-full overflow-hidden">
+                                                    <img
+                                                        alt="Delhi travel experts"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        data-nimg="fill"
+                                                        class="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/london-premium-8jeoTGo78lLM8UyAaEM58O7L1pk3IK.jpg"
+                                                    />
+                                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
+                                                    <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
                                                         <svg
                                                             xmlns="http://www.w3.org/2000/svg"
                                                             width="24"
@@ -744,394 +783,25 @@ const Index = () => {
                                                             stroke-width="2"
                                                             stroke-linecap="round"
                                                             stroke-linejoin="round"
-                                                            class="lucide lucide-chevron-left h-5 w-5"
+                                                            class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
                                                         >
-                                                            <path d="m15 18-6-6 6-6"></path>
+                                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
                                                         </svg>
-                                                    </button>
-                                                    <div class="swiper-wrapper">
-                                                    
-                                                        <div
-                                                            class="swiper-slide text-card-foreground group flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                            
-                                                            data-v0-t="card"
-                                                        >
-                                                            <div class="relative h-40 w-full overflow-hidden">
-                                                                <img
-                                                                    alt="Delhi travel experts"
-                                                                    loading="lazy"
-                                                                    decoding="async"
-                                                                    data-nimg="fill"
-                                                                    class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                    
-                                                                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/london-premium-8jeoTGo78lLM8UyAaEM58O7L1pk3IK.jpg"
-                                                                />
-                                                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                                <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                        
-                                                                    >
-                                                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                        <circle cx="12" cy="10" r="3"></circle>
-                                                                    </svg>
-                                                                    <span class="text-lg font-medium text-white">Delhi</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="p-3 md:p-4">
-                                                                <div class="mb-3 flex items-center justify-between">
-                                                                    <div class="text-sm text-slate-600"><span class="font-medium text-primary">42</span> experts available</div>
-                                                                </div>
-                                                                <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                    <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Historical Tours</p>
-                                                                </div>
-                                                                <button
-                                                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                                >
-                                                                    View Experts in Delhi
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                    >
-                                                                        <path d="m9 18 6-6-6-6"></path>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="swiper-slide text-card-foreground group flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                            
-                                                            data-v0-t="card"
-                                                        >
-                                                            <div class="relative h-40 w-full overflow-hidden">
-                                                                <img
-                                                                    alt="Mumbai travel experts"
-                                                                    loading="lazy"
-                                                                    decoding="async"
-                                                                    data-nimg="fill"
-                                                                    class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                    
-                                                                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/new-york-premium-HQS1Nz3fo9al4YHlydjjn7jB22qfsY.jpg"
-                                                                />
-                                                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                                <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                    >
-                                                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                        <circle cx="12" cy="10" r="3"></circle>
-                                                                    </svg>
-                                                                    <span class="text-lg font-medium text-white">Mumbai</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="p-3 md:p-4">
-                                                                <div class="mb-3 flex items-center justify-between">
-                                                                    <div class="text-sm text-slate-600"><span class="font-medium text-primary">38</span> experts available</div>
-                                                                </div>
-                                                                <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                    <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> City Experiences</p>
-                                                                </div>
-                                                                <button
-                                                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                                >
-                                                                    View Experts in Mumbai
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                    >
-                                                                        <path d="m9 18 6-6-6-6"></path>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="swiper-slide text-card-foreground group flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                            data-v0-t="card"
-                                                        >
-                                                            <div class="relative h-40 w-full overflow-hidden">
-                                                                <img
-                                                                    alt="Jaipur travel experts"
-                                                                    loading="lazy"
-                                                                    decoding="async"
-                                                                    data-nimg="fill"
-                                                                    class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                    
-                                                                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/paris-premium-KRxmtU7XnvAoZD5QnMjcCj6anBcJ32.jpg"
-                                                                />
-                                                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                                <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                    >
-                                                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                        <circle cx="12" cy="10" r="3"></circle>
-                                                                    </svg>
-                                                                    <span class="text-lg font-medium text-white">Jaipur</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="p-3 md:p-4">
-                                                                <div class="mb-3 flex items-center justify-between">
-                                                                    <div class="text-sm text-slate-600"><span class="font-medium text-primary">29</span> experts available</div>
-                                                                </div>
-                                                                <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                    <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Cultural Heritage</p>
-                                                                </div>
-                                                                <button
-                                                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                                >
-                                                                    View Experts in Jaipur
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                    >
-                                                                        <path d="m9 18 6-6-6-6"></path>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="swiper-slide text-card-foreground group flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                            data-v0-t="card"
-                                                        >
-                                                            <div class="relative h-40 w-full overflow-hidden">
-                                                                <img
-                                                                    alt="Goa travel experts"
-                                                                    loading="lazy"
-                                                                    decoding="async"
-                                                                    data-nimg="fill"
-                                                                    class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                    
-                                                                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-premium-jIqylTxnl7GAfqWMHqRHt7FbLQYMgj.jpg"
-                                                                />
-                                                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                                <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                    >
-                                                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                        <circle cx="12" cy="10" r="3"></circle>
-                                                                    </svg>
-                                                                    <span class="text-lg font-medium text-white">Goa</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="p-3 md:p-4">
-                                                                <div class="mb-3 flex items-center justify-between">
-                                                                    <div class="text-sm text-slate-600"><span class="font-medium text-primary">35</span> experts available</div>
-                                                                </div>
-                                                                <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                    <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Beach Getaways</p>
-                                                                </div>
-                                                                <button
-                                                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                                >
-                                                                    View Experts in Goa
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                    >
-                                                                        <path d="m9 18 6-6-6-6"></path>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="swiper-slide text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                            data-v0-t="card"
-                                                        >
-                                                            <div class="relative h-40 w-full overflow-hidden">
-                                                                <img
-                                                                    alt="Varanasi travel experts"
-                                                                    loading="lazy"
-                                                                    decoding="async"
-                                                                    data-nimg="fill"
-                                                                    class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                    
-                                                                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/tokyo-premium-QP12TkkIL0YeIX4LSGHtSn8zXYPV9p.jpg"
-                                                                />
-                                                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                                <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                    >
-                                                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                        <circle cx="12" cy="10" r="3"></circle>
-                                                                    </svg>
-                                                                    <span class="text-lg font-medium text-white">Varanasi</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="p-3 md:p-4">
-                                                                <div class="mb-3 flex items-center justify-between">
-                                                                    <div class="text-sm text-slate-600"><span class="font-medium text-primary">22</span> experts available</div>
-                                                                </div>
-                                                                <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                    <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Spiritual Journeys</p>
-                                                                </div>
-                                                                <button
-                                                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                                >
-                                                                    View Experts in Varanasi
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                    >
-                                                                        <path d="m9 18 6-6-6-6"></path>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="swiper-slide text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                            data-v0-t="card"
-                                                        >
-                                                            <div class="relative h-40 w-full overflow-hidden">
-                                                                <img
-                                                                    alt="Kochi travel experts"
-                                                                    loading="lazy"
-                                                                    decoding="async"
-                                                                    data-nimg="fill"
-                                                                    class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                    
-                                                                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/sydney-premium-prJY3YIRtvcGBUfn40iraQmlgA9y6O.jpg"
-                                                                />
-                                                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                                <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                    >
-                                                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                        <circle cx="12" cy="10" r="3"></circle>
-                                                                    </svg>
-                                                                    <span class="text-lg font-medium text-white">Kochi</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="p-3 md:p-4">
-                                                                <div class="mb-3 flex items-center justify-between">
-                                                                    <div class="text-sm text-slate-600"><span class="font-medium text-primary">26</span> experts available</div>
-                                                                </div>
-                                                                <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                    <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Backwater Tours</p>
-                                                                </div>
-                                                                <button
-                                                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                                >
-                                                                    View Experts in Kochi
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                    >
-                                                                        <path d="m9 18 6-6-6-6"></path>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    
+                                                        <span class="text-lg font-medium text-white">Delhi</span>
+                                                    </div>
+                                                </div>
+                                                <div class="p-3 md:p-4">
+                                                    <div class="mb-3 flex items-center justify-between">
+                                                        <div class="text-sm text-slate-600"><span class="font-medium text-primary">42</span> experts available</div>
+                                                    </div>
+                                                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
+                                                        <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Historical Tours</p>
                                                     </div>
                                                     <button
-                                                        class="custom-next absolute -right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-md transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-110 md:right-2"
-                                                        aria-label="Next city"
-                                                        >
+                                                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
+                                                    >
+                                                        View Experts in Delhi
                                                         <svg
                                                             xmlns="http://www.w3.org/2000/svg"
                                                             width="24"
@@ -1142,486 +812,588 @@ const Index = () => {
                                                             stroke-width="2"
                                                             stroke-linecap="round"
                                                             stroke-linejoin="round"
-                                                            class="lucide lucide-chevron-right h-5 w-5"
+                                                            class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
                                                         >
                                                             <path d="m9 18 6-6-6-6"></path>
                                                         </svg>
                                                     </button>
-                                            </div>
-                                            
-                
-                                        </div>
-                                        <div class="mt-8 md:mt-12 text-center reveal-on-scroll revealed">
-                                            <a href="/experts/all">
-                                                <button
-                                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-11 rounded-md px-8 bg-primary text-white hover:bg-primary/90 transition-all duration-300 hover:scale-105 btn-pulse"
-                                                >
-                                                    View All Experts
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="24"
-                                                        height="24"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="2"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="lucide lucide-chevron-right ml-2 h-4 w-4"
-                                                    >
-                                                        <path d="m9 18 6-6-6-6"></path>
-                                                    </svg>
-                                                </button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                                <div class="tab-list" id="specialty">
-                                    <div
-                                        class="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mt-0"
-                                        >
-                                        <div class="relative -mx-4 px-4">
-                                            <div class="swiper mySwiper4 relative">
-                                                <button
-                                                    class="custom-prev absolute -left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-md transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-110 md:left-2"
-                                                    aria-label="Previous city"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="24"
-                                                        height="24"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="2"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="lucide lucide-chevron-left h-5 w-5"
-                                                    >
-                                                        <path d="m15 18-6-6 6-6"></path>
-                                                    </svg>
-                                                </button>
-                                                <div class="swiper-wrapper">
-                                                    <div
-                                                        class="swiper-slide text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                        
-                                                        data-v0-t="card"
-                                                    >
-                                                        <div class="relative h-40 w-full overflow-hidden">
-                                                            <img
-                                                                alt="Delhi travel experts"
-                                                                loading="lazy"
-                                                                decoding="async"
-                                                                data-nimg="fill"
-                                                                class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                
-                                                                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/london-premium-8jeoTGo78lLM8UyAaEM58O7L1pk3IK.jpg"
-                                                            />
-                                                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                            <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                >
-                                                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                <span class="text-lg font-medium text-white">Delhi</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="p-3 md:p-4">
-                                                            <div class="mb-3 flex items-center justify-between">
-                                                                <div class="text-sm text-slate-600"><span class="font-medium text-primary">42</span> experts available</div>
-                                                            </div>
-                                                            <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Historical Tours</p>
-                                                            </div>
-                                                            <button
-                                                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                            >
-                                                                View Experts in Delhi
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                >
-                                                                    <path d="m9 18 6-6-6-6"></path>
-                                                                </svg>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="swiper-slide text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                        
-                                                        data-v0-t="card"
-                                                    >
-                                                        <div class="relative h-40 w-full overflow-hidden">
-                                                            <img
-                                                                alt="Mumbai travel experts"
-                                                                loading="lazy"
-                                                                decoding="async"
-                                                                data-nimg="fill"
-                                                                class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                
-                                                                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/new-york-premium-HQS1Nz3fo9al4YHlydjjn7jB22qfsY.jpg"
-                                                            />
-                                                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                            <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                >
-                                                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                <span class="text-lg font-medium text-white">Mumbai</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="p-3 md:p-4">
-                                                            <div class="mb-3 flex items-center justify-between">
-                                                                <div class="text-sm text-slate-600"><span class="font-medium text-primary">38</span> experts available</div>
-                                                            </div>
-                                                            <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> City Experiences</p>
-                                                            </div>
-                                                            <button
-                                                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                            >
-                                                                View Experts in Mumbai
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                >
-                                                                    <path d="m9 18 6-6-6-6"></path>
-                                                                </svg>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="swiper-slide text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                        data-v0-t="card"
-                                                    >
-                                                        <div class="relative h-40 w-full overflow-hidden">
-                                                            <img
-                                                                alt="Jaipur travel experts"
-                                                                loading="lazy"
-                                                                decoding="async"
-                                                                data-nimg="fill"
-                                                                class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                
-                                                                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/paris-premium-KRxmtU7XnvAoZD5QnMjcCj6anBcJ32.jpg"
-                                                            />
-                                                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                            <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                >
-                                                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                <span class="text-lg font-medium text-white">Jaipur</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="p-3 md:p-4">
-                                                            <div class="mb-3 flex items-center justify-between">
-                                                                <div class="text-sm text-slate-600"><span class="font-medium text-primary">29</span> experts available</div>
-                                                            </div>
-                                                            <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Cultural Heritage</p>
-                                                            </div>
-                                                            <button
-                                                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                            >
-                                                                View Experts in Jaipur
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                >
-                                                                    <path d="m9 18 6-6-6-6"></path>
-                                                                </svg>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="swiper-slide text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                        data-v0-t="card"
-                                                    >
-                                                        <div class="relative h-40 w-full overflow-hidden">
-                                                            <img
-                                                                alt="Goa travel experts"
-                                                                loading="lazy"
-                                                                decoding="async"
-                                                                data-nimg="fill"
-                                                                class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                
-                                                                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-premium-jIqylTxnl7GAfqWMHqRHt7FbLQYMgj.jpg"
-                                                            />
-                                                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                            <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                >
-                                                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                <span class="text-lg font-medium text-white">Goa</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="p-3 md:p-4">
-                                                            <div class="mb-3 flex items-center justify-between">
-                                                                <div class="text-sm text-slate-600"><span class="font-medium text-primary">35</span> experts available</div>
-                                                            </div>
-                                                            <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Beach Getaways</p>
-                                                            </div>
-                                                            <button
-                                                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                            >
-                                                                View Experts in Goa
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                >
-                                                                    <path d="m9 18 6-6-6-6"></path>
-                                                                </svg>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="swiper-slide text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                        data-v0-t="card"
-                                                    >
-                                                        <div class="relative h-40 w-full overflow-hidden">
-                                                            <img
-                                                                alt="Varanasi travel experts"
-                                                                loading="lazy"
-                                                                decoding="async"
-                                                                data-nimg="fill"
-                                                                class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                
-                                                                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/tokyo-premium-QP12TkkIL0YeIX4LSGHtSn8zXYPV9p.jpg"
-                                                            />
-                                                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                            <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                >
-                                                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                <span class="text-lg font-medium text-white">Varanasi</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="p-3 md:p-4">
-                                                            <div class="mb-3 flex items-center justify-between">
-                                                                <div class="text-sm text-slate-600"><span class="font-medium text-primary">22</span> experts available</div>
-                                                            </div>
-                                                            <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Spiritual Journeys</p>
-                                                            </div>
-                                                            <button
-                                                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                            >
-                                                                View Experts in Varanasi
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                >
-                                                                    <path d="m9 18 6-6-6-6"></path>
-                                                                </svg>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="swiper-slide text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md"
-                                                        data-v0-t="card"
-                                                    >
-                                                        <div class="relative h-40 w-full overflow-hidden">
-                                                            <img
-                                                                alt="Kochi travel experts"
-                                                                loading="lazy"
-                                                                decoding="async"
-                                                                data-nimg="fill"
-                                                                class="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                
-                                                                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/sydney-premium-prJY3YIRtvcGBUfn40iraQmlgA9y6O.jpg"
-                                                            />
-                                                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
-                                                            <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
-                                                                >
-                                                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                <span class="text-lg font-medium text-white">Kochi</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="p-3 md:p-4">
-                                                            <div class="mb-3 flex items-center justify-between">
-                                                                <div class="text-sm text-slate-600"><span class="font-medium text-primary">26</span> experts available</div>
-                                                            </div>
-                                                            <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
-                                                                <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Backwater Tours</p>
-                                                            </div>
-                                                            <button
-                                                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
-                                                            >
-                                                                View Experts in Kochi
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
-                                                                >
-                                                                    <path d="m9 18 6-6-6-6"></path>
-                                                                </svg>
-                                                            </button>
-                                                        </div>
+                                                </div>
+
+                                            </SwiperSlide>
+                                            <SwiperSlide className="text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md">
+                                                <div class="relative h-40 w-full overflow-hidden">
+                                                    <img
+                                                        alt="Delhi travel experts"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        data-nimg="fill"
+                                                        class="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/london-premium-8jeoTGo78lLM8UyAaEM58O7L1pk3IK.jpg"
+                                                    />
+                                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
+                                                    <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
+                                                        >
+                                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
+                                                        </svg>
+                                                        <span class="text-lg font-medium text-white">Mumbai</span>
                                                     </div>
                                                 </div>
-                                                <button
-                                                    class="custom-next absolute -right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-md transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-110 md:right-2"
-                                                    aria-label="Next city"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="24"
-                                                        height="24"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="2"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="lucide lucide-chevron-right h-5 w-5"
+                                                <div class="p-3 md:p-4">
+                                                    <div class="mb-3 flex items-center justify-between">
+                                                        <div class="text-sm text-slate-600"><span class="font-medium text-primary">38</span> experts available</div>
+                                                    </div>
+                                                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
+                                                        <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span>  City Experiences</p>
+                                                    </div>
+                                                    <button
+                                                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
                                                     >
-                                                        <path d="m9 18 6-6-6-6"></path>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="mt-8 md:mt-12 text-center reveal-on-scroll revealed">
-                                            <a href="/experts/all">
-                                                <button
-                                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-11 rounded-md px-8 bg-primary text-white hover:bg-primary/90 transition-all duration-300 hover:scale-105 btn-pulse"
-                                                >
-                                                    View All Experts
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="24"
-                                                        height="24"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="2"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="lucide lucide-chevron-right ml-2 h-4 w-4"
+                                                        View Experts in Mumbai
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
+                                                        >
+                                                            <path d="m9 18 6-6-6-6"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </SwiperSlide>
+                                            <SwiperSlide className="text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md">
+                                                <div class="relative h-40 w-full overflow-hidden">
+                                                    <img
+                                                        alt="Delhi travel experts"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        data-nimg="fill"
+                                                        class="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/paris-premium-KRxmtU7XnvAoZD5QnMjcCj6anBcJ32.jpg"
+                                                    />
+                                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
+                                                    <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
+                                                        >
+                                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
+                                                        </svg>
+                                                        <span class="text-lg font-medium text-white">Jaipur</span>
+                                                    </div>
+                                                </div>
+                                                <div class="p-3 md:p-4">
+                                                    <div class="mb-3 flex items-center justify-between">
+                                                        <div class="text-sm text-slate-600"><span class="font-medium text-primary">29</span> experts available</div>
+                                                    </div>
+                                                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
+                                                        <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span>   Cultural Heritage</p>
+                                                    </div>
+                                                    <button
+                                                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
                                                     >
-                                                        <path d="m9 18 6-6-6-6"></path>
-                                                    </svg>
-                                                </button>
-                                            </a>
-                                        </div>
+                                                        View Experts in Mumbai
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
+                                                        >
+                                                            <path d="m9 18 6-6-6-6"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </SwiperSlide>
+                                            <SwiperSlide className="text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md">
+                                                <div class="relative h-40 w-full overflow-hidden">
+                                                    <img
+                                                        alt="Delhi travel experts"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        data-nimg="fill"
+                                                        class="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-premium-jIqylTxnl7GAfqWMHqRHt7FbLQYMgj.jpg"
+                                                    />
+                                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
+                                                    <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
+                                                        >
+                                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
+                                                        </svg>
+                                                        <span class="text-lg font-medium text-white">Goa</span>
+                                                    </div>
+                                                </div>
+                                                <div class="p-3 md:p-4">
+                                                    <div class="mb-3 flex items-center justify-between">
+                                                        <div class="text-sm text-slate-600"><span class="font-medium text-primary">38</span> experts available</div>
+                                                    </div>
+                                                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
+                                                        <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span>   Beach Getaways</p>
+                                                    </div>
+                                                    <button
+                                                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
+                                                    >
+                                                        View Experts in Goa
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
+                                                        >
+                                                            <path d="m9 18 6-6-6-6"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </SwiperSlide>
+                                            <SwiperSlide className="text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md">
+                                                <div class="relative h-40 w-full overflow-hidden">
+                                                    <img
+                                                        alt="Delhi travel experts"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        data-nimg="fill"
+                                                        class="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/london-premium-8jeoTGo78lLM8UyAaEM58O7L1pk3IK.jpg"
+                                                    />
+                                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
+                                                    <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
+                                                        >
+                                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
+                                                        </svg>
+                                                        <span class="text-lg font-medium text-white">Varanasi</span>
+                                                    </div>
+                                                </div>
+                                                <div class="p-3 md:p-4">
+                                                    <div class="mb-3 flex items-center justify-between">
+                                                        <div class="text-sm text-slate-600"><span class="font-medium text-primary">22</span> experts available</div>
+                                                    </div>
+                                                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
+                                                        <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span>   Spiritual Journeys</p>
+                                                    </div>
+                                                    <button
+                                                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
+                                                    >
+                                                        View Experts in Varanasi
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
+                                                        >
+                                                            <path d="m9 18 6-6-6-6"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </SwiperSlide>
+
+                                            {/* Navigation Buttons */}
+                                            <button className="custom-prev absolute -left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-md transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-110 md:left-2 swiper-button-disabled">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left h-5 w-5">
+                                                    <path d="m15 18-6-6 6-6"></path>
+                                                </svg>
+                                            </button>
+                                            <button className="custom-next absolute -right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-md transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-110 md:right-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right h-5 w-5">
+                                                    <path d="m9 18 6-6-6-6"></path>
+                                                </svg>
+                                            </button>
+                                        </Swiper>
+                                    </div>
+                                </div>
+                                        
+                            
+                                <div class={`tab-list ${activeTab === 'specialty' ? 'block' : 'hidden'}`} id="specialty">
+                                    <div className="relative -mx-4 px-4">
+                                        <Swiper
+                                            modules={[Navigation]}
+                                            spaceBetween={15}
+                                            freeMode={true}
+                                            loop={false}
+                                            navigation={{
+                                                nextEl: '.custom-next',
+                                                prevEl: '.custom-prev',
+                                            }}
+                                            slidesPerView="auto"
+                                            breakpoints={{
+                                                640: {
+                                                slidesPerView: 2.2,
+                                                },
+                                                768: {
+                                                slidesPerView: 3.5,
+                                                },
+                                                1024: {
+                                                slidesPerView: 4.6,
+                                                },
+                                            }}
+                                            className="mySwiper4"
+                                            >
+                                            <SwiperSlide className="text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md">
+                                                <div class="relative h-40 w-full overflow-hidden">
+                                                    <img
+                                                        alt="Delhi travel experts"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        data-nimg="fill"
+                                                        class="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/london-premium-8jeoTGo78lLM8UyAaEM58O7L1pk3IK.jpg"
+                                                    />
+                                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
+                                                    <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
+                                                        >
+                                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
+                                                        </svg>
+                                                        <span class="text-lg font-medium text-white">Delhi</span>
+                                                    </div>
+                                                </div>
+                                                <div class="p-3 md:p-4">
+                                                    <div class="mb-3 flex items-center justify-between">
+                                                        <div class="text-sm text-slate-600"><span class="font-medium text-primary">42</span> experts available</div>
+                                                    </div>
+                                                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
+                                                        <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span> Historical Tours</p>
+                                                    </div>
+                                                    <button
+                                                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
+                                                    >
+                                                        View Experts in Delhi
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
+                                                        >
+                                                            <path d="m9 18 6-6-6-6"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+
+                                            </SwiperSlide>
+                                            <SwiperSlide className="text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md">
+                                                <div class="relative h-40 w-full overflow-hidden">
+                                                    <img
+                                                        alt="Delhi travel experts"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        data-nimg="fill"
+                                                        class="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/london-premium-8jeoTGo78lLM8UyAaEM58O7L1pk3IK.jpg"
+                                                    />
+                                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
+                                                    <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
+                                                        >
+                                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
+                                                        </svg>
+                                                        <span class="text-lg font-medium text-white">Mumbai</span>
+                                                    </div>
+                                                </div>
+                                                <div class="p-3 md:p-4">
+                                                    <div class="mb-3 flex items-center justify-between">
+                                                        <div class="text-sm text-slate-600"><span class="font-medium text-primary">38</span> experts available</div>
+                                                    </div>
+                                                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
+                                                        <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span>  City Experiences</p>
+                                                    </div>
+                                                    <button
+                                                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
+                                                    >
+                                                        View Experts in Mumbai
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
+                                                        >
+                                                            <path d="m9 18 6-6-6-6"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </SwiperSlide>
+                                            <SwiperSlide className="text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md">
+                                                <div class="relative h-40 w-full overflow-hidden">
+                                                    <img
+                                                        alt="Delhi travel experts"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        data-nimg="fill"
+                                                        class="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/paris-premium-KRxmtU7XnvAoZD5QnMjcCj6anBcJ32.jpg"
+                                                    />
+                                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
+                                                    <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
+                                                        >
+                                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
+                                                        </svg>
+                                                        <span class="text-lg font-medium text-white">Jaipur</span>
+                                                    </div>
+                                                </div>
+                                                <div class="p-3 md:p-4">
+                                                    <div class="mb-3 flex items-center justify-between">
+                                                        <div class="text-sm text-slate-600"><span class="font-medium text-primary">29</span> experts available</div>
+                                                    </div>
+                                                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
+                                                        <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span>   Cultural Heritage</p>
+                                                    </div>
+                                                    <button
+                                                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
+                                                    >
+                                                        View Experts in Mumbai
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
+                                                        >
+                                                            <path d="m9 18 6-6-6-6"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </SwiperSlide>
+                                            <SwiperSlide className="text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md">
+                                                <div class="relative h-40 w-full overflow-hidden">
+                                                    <img
+                                                        alt="Delhi travel experts"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        data-nimg="fill"
+                                                        class="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/barcelona-premium-jIqylTxnl7GAfqWMHqRHt7FbLQYMgj.jpg"
+                                                    />
+                                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
+                                                    <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
+                                                        >
+                                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
+                                                        </svg>
+                                                        <span class="text-lg font-medium text-white">Goa</span>
+                                                    </div>
+                                                </div>
+                                                <div class="p-3 md:p-4">
+                                                    <div class="mb-3 flex items-center justify-between">
+                                                        <div class="text-sm text-slate-600"><span class="font-medium text-primary">38</span> experts available</div>
+                                                    </div>
+                                                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
+                                                        <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span>   Beach Getaways</p>
+                                                    </div>
+                                                    <button
+                                                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
+                                                    >
+                                                        View Experts in Goa
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
+                                                        >
+                                                            <path d="m9 18 6-6-6-6"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </SwiperSlide>
+                                            <SwiperSlide className="text-card-foreground group min-w-[280px] max-w-[350px] flex-shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-500 hover-lift hover:border-primary/30 hover:shadow-md">
+                                                <div class="relative h-40 w-full overflow-hidden">
+                                                    <img
+                                                        alt="Delhi travel experts"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        data-nimg="fill"
+                                                        class="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/london-premium-8jeoTGo78lLM8UyAaEM58O7L1pk3IK.jpg"
+                                                    />
+                                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 transition-opacity duration-300 group-hover:opacity-70"></div>
+                                                    <div class="absolute bottom-4 left-4 flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-y(-2px)">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-map-pin h-4 w-4 text-primary animate-bounce-subtle"
+                                                        >
+                                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
+                                                        </svg>
+                                                        <span class="text-lg font-medium text-white">Varanasi</span>
+                                                    </div>
+                                                </div>
+                                                <div class="p-3 md:p-4">
+                                                    <div class="mb-3 flex items-center justify-between">
+                                                        <div class="text-sm text-slate-600"><span class="font-medium text-primary">22</span> experts available</div>
+                                                    </div>
+                                                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/5 mb-3">
+                                                        <p class="text-sm text-slate-600 transition-all duration-300 group-hover:text-slate-700"><span class="font-medium">Popular:</span>   Spiritual Journeys</p>
+                                                    </div>
+                                                    <button
+                                                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-10 px-4 py-2 w-full border-primary/30 bg-transparent text-primary hover:bg-primary/10 btn-pulse text-xs md:text-sm"
+                                                    >
+                                                        View Experts in Varanasi
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="lucide lucide-chevron-right ml-1 h-3 w-3 md:h-4 md:w-4"
+                                                        >
+                                                            <path d="m9 18 6-6-6-6"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </SwiperSlide>
+
+                                            {/* Navigation Buttons */}
+                                            <button className="custom-prev absolute -left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-md transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-110 md:left-2">
+                                            &#8592;
+                                            </button>
+                                            <button className="custom-next absolute -right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-md transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-110 md:right-2">
+                                            &#8594;
+                                            </button>
+                                        </Swiper>
                                     </div>
                                 </div>
                             </div>
@@ -3756,4 +3528,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Experts;
