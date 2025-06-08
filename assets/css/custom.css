@@ -11,6 +11,13 @@
 
 }
 
+.all-destination {
+  position: relative;
+  right: 100px;
+  margin-top: 60px;
+  float: right;
+}
+.custom-tab .lucide{width: 1.5rem;height: 1.5rem;margin-right: 0;}
 /* @media (min-width: 1024px) {
   .container {
     max-width: 100% !important;

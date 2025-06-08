@@ -23,28 +23,28 @@
 });
 
 
-const swiper = new Swiper(".mySwiper4", {
-    slidesPerView: 'auto',
-    // slidesPerView: 1.5,
-    spaceBetween: 15,
-    freeMode: true,
-    loop: false,
-    navigation: {
-      nextEl: ".custom-next",
-      prevEl: ".custom-prev",
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 2.2,
-      },
-      768: {
-        slidesPerView: 3.5,
-      },
-      1024: {
-        slidesPerView: 4.6,
-      },
-    },
-  });
+// const swiper = new Swiper(".mySwiper4", {
+//     slidesPerView: 'auto',
+//     // slidesPerView: 1.5,
+//     spaceBetween: 15,
+//     freeMode: true,
+//     loop: false,
+//     navigation: {
+//       nextEl: ".custom-next",
+//       prevEl: ".custom-prev",
+//     },
+//     breakpoints: {
+//       640: {
+//         slidesPerView: 2.2,
+//       },
+//       768: {
+//         slidesPerView: 3.5,
+//       },
+//       1024: {
+//         slidesPerView: 4.6,
+//       },
+//     },
+//   });
 
 $(document).ready(function () {
   var owl = $('.4_5owlCarouselstyle');
